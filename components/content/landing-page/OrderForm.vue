@@ -1,12 +1,14 @@
 <template>
-    <div id="order" class="bg-gray-100 p-32">
+    <div id="order" class="bg-gray-100 p-4 md:p-32">
         <form
             v-if="step === 1"
             @submit.prevent="submitForm"
-            class="bg-white p-8 rounded-lg shadow-lg"
+            class="bg-white p-4 md:p-8 rounded-lg shadow-lg"
         >
-            <h3 class="mb-6 font-bold text-center">Beställningsformulär</h3>
-            <div class="mb-6">
+            <h3 class="mb-4 md:mb-6 font-bold text-center">
+                Beställningsformulär
+            </h3>
+            <div class="mb-4 md:mb-6">
                 <div class="mb-4">
                     <label for="name" class="block mb-2 font-medium"
                         >Namn:</label
@@ -44,7 +46,7 @@
                     />
                 </div>
             </div>
-            <div class="mb-6">
+            <div class="mb-4 md:mb-6">
                 <label for="package" class="block mb-2 font-medium"
                     >Välj paket:</label
                 >
@@ -59,7 +61,7 @@
                 </select>
             </div>
 
-            <div class="mb-6">
+            <div class="mb-4 md:mb-6">
                 <label for="custom-style" class="block mb-2 font-medium"
                     >Önskade bildstilar (valfritt):</label
                 >
@@ -75,7 +77,7 @@
                 </p>
             </div>
 
-            <div class="mb-6">
+            <div class="mb-4 md:mb-6">
                 <p v-if="requiresStartupFee">
                     Uppstartsavgift:
                     <span v-if="isStartupFeeDiscounted" class="line-through"
@@ -89,7 +91,7 @@
                 <p class="font-medium">Totalt: {{ totalPrice }} kr</p>
             </div>
 
-            <div class="mb-6 p-4 bg-blue-100 rounded-xl">
+            <div class="mb-4 md:mb-6 p-4 bg-blue-100 rounded-xl">
                 <p class="mb-2">
                     När du har skickat in beställningen kommer vi att granska
                     den och återkomma till dig inom 1-2 arbetsdagar med en
@@ -104,7 +106,7 @@
             <div class="flex items-center justify-center">
                 <button
                     type="submit"
-                    class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
+                    class="bg-green-600 text-white px-4 py-3 md:px-6 md:py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
                 >
                     Skicka beställning
                 </button>
@@ -112,8 +114,10 @@
         </form>
 
         <div v-else-if="step === 2">
-            <div class="mb-6 bg-white p-8 rounded-lg shadow-lg">
-                <h3 class="mb-6 font-bold text-center">Orderbekräftelse:</h3>
+            <div class="mb-6 bg-white p-4 md:p-8 rounded-lg shadow-lg">
+                <h3 class="mb-4 md:mb-6 font-bold text-center">
+                    Orderbekräftelse:
+                </h3>
 
                 <p><strong>Ordernummer:</strong> {{ orderNumber }}</p>
                 <p><strong>Namn:</strong> {{ name }}</p>

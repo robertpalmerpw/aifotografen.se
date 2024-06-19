@@ -16,7 +16,7 @@
                     @click="selectedImage = image"
                 >
                     <img
-                        :src="`_nuxt/images/examples/${image}`"
+                        :src="`/images/examples/${image}`"
                         :alt="`Exempelbild ${image}`"
                         class="rounded shadow-lg w-full h-full object-cover transition duration-300 ease-in-out transform hover:scale-105"
                     />
@@ -26,7 +26,7 @@
         <!-- Modal -->
         <div
             v-if="selectedImage"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
             @click.self="selectedImage = null"
         >
             <div
@@ -34,7 +34,7 @@
                 style="max-width: 75%; max-height: 75vh"
             >
                 <img
-                    :src="`_nuxt/images/examples/${selectedImage}`"
+                    :src="`/images/examples/${selectedImage}`"
                     :alt="`Exempelbild ${selectedImage}`"
                     class="rounded"
                     style="
@@ -46,7 +46,7 @@
 
                 <!-- Close button -->
                 <button
-                    class="absolute top-0 right-0 mt-2 mr-2 p-2 bg-red-600 text-white text-lg rounded-full shadow-lg hover:bg-red-700 focus:outline-none"
+                    class="absolute top-0 right-0 mt-2 mr-2 p-2 bg-gray-600 text-white text-lg rounded-full shadow-lg hover:bg-red-700 focus:outline-none"
                     @click="selectedImage = null"
                 >
                     <span>&times;</span>
