@@ -1,14 +1,16 @@
 <template>
-    <div>
+    <div id="order" class="bg-gray-100 p-32">
         <form
             v-if="step === 1"
             @submit.prevent="submitForm"
-            class="max-w-lg mx-auto p-3"
+            class="bg-white p-8 rounded-lg shadow-lg"
         >
-            <h2 class="mb-6">Beställningsformulär</h2>
+            <h3 class="mb-6 font-bold text-center">Beställningsformulär</h3>
             <div class="mb-6">
                 <div class="mb-4">
-                    <label for="name" class="block mb-2">Namn:</label>
+                    <label for="name" class="block mb-2 font-medium"
+                        >Namn:</label
+                    >
                     <input
                         type="text"
                         id="name"
@@ -18,7 +20,9 @@
                     />
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block mb-2">E-post:</label>
+                    <label for="email" class="block mb-2 font-medium"
+                        >E-post:</label
+                    >
                     <input
                         type="email"
                         id="email"
@@ -28,7 +32,9 @@
                     />
                 </div>
                 <div>
-                    <label for="phone" class="block mb-2">Telefonnummer:</label>
+                    <label for="phone" class="block mb-2 font-medium"
+                        >Telefonnummer:</label
+                    >
                     <input
                         type="tel"
                         id="phone"
@@ -47,179 +53,43 @@
                     v-model="selectedPackage"
                     class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                    <option value="bas">Bas (5 bilder, 1 stil)</option>
-                    <option value="pro">Pro (10 bilder, 2 stilar)</option>
-                    <option value="premium">
-                        Premium (20 bilder, 4 stilar)
-                    </option>
+                    <option value="bas">Bas (5 bilder)</option>
+                    <option value="pro">Pro (10 bilder)</option>
+                    <option value="premium">Premium (20 bilder)</option>
                 </select>
             </div>
 
             <div class="mb-6">
-                <label class="block mb-2 font-medium">Välj bildstil(ar):</label>
-                <template v-if="selectedPackage === 'bas'">
-                    <div class="flex items-center mb-2">
-                        <input
-                            type="radio"
-                            id="bas-style-1"
-                            value="Professionella studioporträtt"
-                            v-model="basStyle"
-                            class="mr-2"
-                        />
-                        <label for="bas-style-1"
-                            >Professionella studioporträtt</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                            type="radio"
-                            id="bas-style-2"
-                            value="Livsstilsbilder utomhus"
-                            v-model="basStyle"
-                            class="mr-2"
-                        />
-                        <label for="bas-style-2">Livsstilsbilder utomhus</label>
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                            type="radio"
-                            id="bas-style-3"
-                            value="Modelliknande modefotografering"
-                            v-model="basStyle"
-                            class="mr-2"
-                        />
-                        <label for="bas-style-3"
-                            >Modelliknande modefotografering</label
-                        >
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input
-                            type="radio"
-                            id="bas-style-4"
-                            value="Redaktionell stil"
-                            v-model="basStyle"
-                            class="mr-2"
-                        />
-                        <label for="bas-style-4">Redaktionell stil</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input
-                            type="radio"
-                            id="bas-style-5"
-                            value="Konstnärliga och drömlika"
-                            v-model="basStyle"
-                            class="mr-2"
-                        />
-                        <label for="bas-style-5"
-                            >Konstnärliga och drömlika</label
-                        >
-                    </div>
-                </template>
-
-                <template v-else-if="selectedPackage === 'pro'">
-                    <div v-for="n in 2" :key="n" class="mb-4">
-                        <label :for="`pro-style-${n}`" class="block mb-2"
-                            >Bildstil {{ n }}:</label
-                        >
-                        <select
-                            :id="`pro-style-${n}`"
-                            v-model="proStyles[n - 1]"
-                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <option value="">Välj en stil</option>
-                            <option value="Professionella studioporträtt">
-                                Professionella studioporträtt
-                            </option>
-                            <option value="Livsstilsbilder utomhus">
-                                Livsstilsbilder utomhus
-                            </option>
-                            <option value="Modelliknande modefotografering">
-                                Modelliknande modefotografering
-                            </option>
-                            <option value="Redaktionell stil">
-                                Redaktionell stil
-                            </option>
-                            <option value="Konstnärliga och drömlika">
-                                Konstnärliga och drömlika
-                            </option>
-                        </select>
-                    </div>
-                </template>
-
-                <template v-else-if="selectedPackage === 'premium'">
-                    <div v-for="n in 4" :key="n" class="mb-4">
-                        <label :for="`premium-style-${n}`" class="block mb-2"
-                            >Bildstil {{ n }}:</label
-                        >
-                        <select
-                            :id="`premium-style-${n}`"
-                            v-model="premiumStyles[n - 1]"
-                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <option value="">Välj en stil</option>
-                            <option value="Professionella studioporträtt">
-                                Professionella studioporträtt
-                            </option>
-                            <option value="Livsstilsbilder utomhus">
-                                Livsstilsbilder utomhus
-                            </option>
-                            <option value="Modelliknande modefotografering">
-                                Modelliknande modefotografering
-                            </option>
-                            <option value="Redaktionell stil">
-                                Redaktionell stil
-                            </option>
-                            <option value="Konstnärliga och drömlika">
-                                Konstnärliga och drömlika
-                            </option>
-                        </select>
-                    </div>
-                </template>
-            </div>
-            <div class="mb-6">
                 <label for="custom-style" class="block mb-2 font-medium"
-                    >Egen bildstil (valfritt):</label
+                    >Önskade bildstilar (valfritt):</label
                 >
                 <textarea
                     id="custom-style"
                     v-model="customStyle"
                     rows="3"
                     class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Beskriv din egen önskade bildstil här..."
+                    placeholder="Beskriv vilka typer av bilder du vill ha här..."
                 ></textarea>
-            </div>
-            <!--             <div class="mb-6">
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        v-model="requiresStartupFee"
-                        class="form-checkbox text-blue-500"
-                    />
-                    <span class="ml-2"
-                        >Kräver uppstartsavgift för att träna AI</span
-                    >
-                </label>
-                <p v-if="isStartupFeeDiscounted" class="text-green-600">
-                    Just nu: Uppstartsavgiften är rabatterad!
+                <p class="text-sm text-gray-500 mt-2">
+                    Om du inte beskriver något väljer vi ut bildstilar åt dig.
                 </p>
-            </div> -->
+            </div>
+
             <div class="mb-6">
-                <h3 class="mb-2 font-medium">Prissummering:</h3>
-                <p>Paket: {{ packagePrice }} kr</p>
                 <p v-if="requiresStartupFee">
                     Uppstartsavgift:
                     <span v-if="isStartupFeeDiscounted" class="line-through"
                         >500 kr</span
                     >
                     <span v-else>500 kr</span>
-                    <span v-if="isStartupFeeDiscounted" class="text-green-600">
-                        {{ discountedStartupFee }} kr
-                    </span>
+                    <span v-if="isStartupFeeDiscounted" class="text-green-600"
+                        >{{ discountedStartupFee }} kr</span
+                    >
                 </p>
                 <p class="font-medium">Totalt: {{ totalPrice }} kr</p>
             </div>
-            <div class="mb-6 p-4 bg-blue-100 rounded">
-                <h3 class="mb-2 font-medium">Efter beställning</h3>
+
+            <div class="mb-6 p-4 bg-blue-100 rounded-xl">
                 <p class="mb-2">
                     När du har skickat in beställningen kommer vi att granska
                     den och återkomma till dig inom 1-2 arbetsdagar med en
@@ -231,54 +101,54 @@
                 </p>
             </div>
 
-            <button
-                type="submit"
-                class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Skicka beställning
-            </button>
+            <div class="flex items-center justify-center">
+                <button
+                    type="submit"
+                    class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
+                >
+                    Skicka beställning
+                </button>
+            </div>
         </form>
 
-        <div v-else-if="step === 2" class="max-w-lg mx-auto">
-            <h2 class="mb-6">Orderbekräftelse</h2>
-            <div class="mb-6">
-                <ul class="steps">
-                    <li class="step step-primary">Fyll i formulär</li>
-                    <li class="step step-primary">Bekräftelse</li>
-                </ul>
+        <div v-else-if="step === 2">
+            <div class="mb-6 bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="mb-6 font-bold text-center">Orderbekräftelse:</h3>
+
+                <p><strong>Ordernummer:</strong> {{ orderNumber }}</p>
+                <p><strong>Namn:</strong> {{ name }}</p>
+                <p><strong>E-post:</strong> {{ email }}</p>
+                <p><strong>Telefonnummer:</strong> {{ phone }}</p>
+                <p><strong>Paket:</strong> {{ selectedPackage }}</p>
+                <p><strong>Totalt pris:</strong> {{ totalPrice }} kr</p>
+
+                <div class="mt-3">
+                    Vi kommer att granska din beställning och återkomma till dig
+                    inom 1-2 arbetsdagar med en orderbekräftelse och
+                    betalningsinstruktioner.
+                </div>
             </div>
-            <p class="mb-4">Tack för din beställning, {{ name }}!</p>
-            <div class="mb-6">
-                <h3 class="mb-2 font-medium">Orderdetaljer:</h3>
-                <p>Namn: {{ name }}</p>
-                <p>E-post: {{ email }}</p>
-                <p>Telefonnummer: {{ phone }}</p>
-                <p>Paket: {{ selectedPackage }}</p>
-                <p v-if="selectedPackage === 'bas'">Bildstil: {{ basStyle }}</p>
-                <p v-else-if="selectedPackage === 'pro'">
-                    Bildstilar: {{ proStyles.join(", ") }}
-                </p>
-                <p v-else-if="selectedPackage === 'premium'">
-                    Bildstilar: {{ premiumStyles.join(", ") }}
-                </p>
-                <p v-if="customStyle">Egen bildstil: {{ customStyle }}</p>
-                <p>Totalt pris: {{ totalPrice }} kr</p>
-            </div>
-            <p>
-                Vi kommer att granska din beställning och återkomma till dig
-                inom 1-2 arbetsdagar med en orderbekräftelse och
-                betalningsinstruktioner.
-            </p>
+        </div>
+
+        <div v-if="isLoading" class="loading-spinner">
+            <div class="spinner"></div>
         </div>
     </div>
 </template>
+
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, defineProps, watch } from "vue";
+import axios from "axios";
+
+const props = defineProps({
+    selectedPackageProp: {
+        type: String,
+        default: "bas",
+    },
+});
+
 const step = ref(1);
-const selectedPackage = ref("bas");
-const basStyle = ref("");
-const proStyles = ref(["", ""]);
-const premiumStyles = ref(["", "", "", ""]);
+const selectedPackage = ref(props.selectedPackageProp);
 const customStyle = ref("");
 const requiresStartupFee = ref(false);
 const name = ref("");
@@ -286,7 +156,7 @@ const email = ref("");
 const phone = ref("");
 const isStartupFeeDiscounted = ref(true);
 const discountedStartupFee = 250;
-const packagePrices = { bas: 500, pro: 1000, premium: 2000 };
+const packagePrices = { bas: 499, pro: 899, premium: 1599 };
 const packagePrice = computed(() => packagePrices[selectedPackage.value]);
 const totalPrice = computed(
     () =>
@@ -297,8 +167,87 @@ const totalPrice = computed(
                 : 500
             : 0),
 );
+const isLoading = ref(false);
+const orderNumber = ref("");
+
+watch(
+    () => props.selectedPackageProp,
+    (newValue) => {
+        selectedPackage.value = newValue;
+        console.log(`selectedPackage updated to: ${newValue}`);
+    },
+);
+
+function generateOrderNumber() {
+    const now = new Date();
+    const timestamp = now.getTime().toString();
+    const randomPart = Math.floor(Math.random() * 10000)
+        .toString()
+        .padStart(4, "0");
+    return `${timestamp}-${randomPart}`;
+}
 
 async function submitForm() {
-    step.value = 2;
+    isLoading.value = true;
+    orderNumber.value = generateOrderNumber();
+    const orderDetails = {
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        selectedPackage: selectedPackage.value,
+        customStyle: customStyle.value,
+        totalPrice: totalPrice.value,
+        orderNumber: orderNumber.value,
+    };
+
+    try {
+        const response = await axios.post(
+            "https://us-central1-podranker.cloudfunctions.net/aifotografen",
+            orderDetails,
+        );
+
+        if (response.status === 200) {
+            step.value = 2;
+        } else {
+            console.error("Failed to submit form");
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+    } finally {
+        isLoading.value = false;
+    }
 }
 </script>
+
+<style scoped>
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+</style>

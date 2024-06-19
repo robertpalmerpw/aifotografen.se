@@ -6,14 +6,21 @@
 
     <main class="mt-14">
         <div class="mx-auto max-w-[1330px] md:p-4">
-            <Hero /> <ExampleImages /><Testimonials /> <Pricing />
+            <Hero />
+            <ExampleImages />
+            <Testimonials />
+            <Pricing @select-package="handlePackageSelection" />
             <ExampleUsage />
-            <AITrainingProcess /> <CallToAction /> <FAQ />
-            <OrderForm />
+            <AITrainingProcess />
+            <CallToAction />
+            <FAQ />
+            <OrderForm ref="orderForm" :selectedPackageProp="selectedPackage" />
         </div>
     </main>
 </template>
-<script>
+
+<script setup>
+import { ref } from "vue";
 import Hero from "~/components/content/landing-page/Hero.vue";
 import Testimonials from "~/components/content/landing-page/Testimonials.vue";
 import Pricing from "~/components/content/landing-page/Pricing.vue";
@@ -24,18 +31,16 @@ import FAQ from "~/components/content/landing-page/FAQ.vue";
 import Stats from "~/components/content/landing-page/Stats.vue";
 import ExampleUsage from "~/components/content/landing-page/ExampleUsage.vue";
 import OrderForm from "~/components/content/landing-page/OrderForm.vue";
-export default {
-    components: {
-        Hero,
-        Testimonials,
-        Pricing,
-        AITrainingProcess,
-        ExampleImages,
-        CallToAction,
-        FAQ,
-        Stats,
-        ExampleUsage,
-        OrderForm,
-    },
+
+const orderFormRef = ref(null);
+const selectedPackage = ref("bas");
+
+const handlePackageSelection = (packageType) => {
+    console.log(`Selected package: ${packageType}`);
+    selectedPackage.value = packageType;
+    if (orderFormRef.value) {
+        orderFormRef.value.selectedPackage = packageType;
+        document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+    }
 };
 </script>

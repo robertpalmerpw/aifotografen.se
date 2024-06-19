@@ -18,7 +18,7 @@
                             idéer. Inget behov av kamera eller fotostudio.
                         </p>
                         <a
-                            href="#"
+                            href="#order"
                             class="bg-green-600 text-white px-10 py-4 rounded-full text-2xl font-bold uppercase tracking-wide hover:bg-green-700 inline-block"
                             >Kom igång</a
                         >

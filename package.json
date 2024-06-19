@@ -13,9 +13,13 @@
     "@nuxtjs/tailwindcss": "6.11.4",
     "@stefanobartoletti/nuxt-social-share": "^0.7.0",
     "@tailwindcss/typography": "0.5.10",
+    "axios": "^1.7.2",
     "feed": "4.2.2",
     "ipx": "^3.0.1",
     "nuxt": "3.10.3",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
+    "remark-mermaidjs": "^6.0.0",
     "remark-reading-time": "2.0.1",
     "sitemap": "7.1.1"
   },

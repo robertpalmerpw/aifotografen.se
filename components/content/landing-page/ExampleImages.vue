@@ -16,7 +16,7 @@
                     @click="selectedImage = image"
                 >
                     <img
-                        :src="`_nuxt/public/images/examples/${image}`"
+                        :src="`_nuxt/images/examples/${image}`"
                         :alt="`Exempelbild ${image}`"
                         class="rounded shadow-lg w-full h-full object-cover transition duration-300 ease-in-out transform hover:scale-105"
                     />
@@ -26,23 +26,30 @@
         <!-- Modal -->
         <div
             v-if="selectedImage"
-            class="fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
             @click.self="selectedImage = null"
         >
             <div
-                class="relative top-1/4 mx-auto p-5 border w-3/4 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white"
+                class="relative p-4 border shadow-lg rounded-md bg-white flex items-center justify-center overflow-hidden"
+                style="max-width: 75%; max-height: 75vh"
             >
                 <img
-                    :src="`_nuxt/public/images/examples/${selectedImage}`"
+                    :src="`_nuxt/images/examples/${selectedImage}`"
                     :alt="`Exempelbild ${selectedImage}`"
                     class="rounded"
+                    style="
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: contain;
+                    "
                 />
+
                 <!-- Close button -->
                 <button
-                    class="absolute top-0 right-0 mt-2 mr-2"
+                    class="absolute top-0 right-0 mt-2 mr-2 p-2 bg-red-600 text-white text-lg rounded-full shadow-lg hover:bg-red-700 focus:outline-none"
                     @click="selectedImage = null"
                 >
-                    <span class="text-black">&times;</span>
+                    <span>&times;</span>
                 </button>
             </div>
         </div>

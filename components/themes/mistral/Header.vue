@@ -96,11 +96,11 @@
                                     class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium font-to-invert-to-black"
                                     >{{ item.name }}
                                 </NuxtLink>
-                                <NuxtLink
-                                    href="#"
+                                <a
+                                    href="#order"
                                     class="bg-green-600 text-white py-2 px-3 rounded-full text-lg font-bold uppercase tracking-wide hover:bg-green-700"
                                     >BESTÄLL
-                                </NuxtLink>
+                                </a>
                             </div>
                         </div>
                     </div>

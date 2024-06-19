@@ -3,7 +3,6 @@
         <div class="container mx-auto px-4">
             <h2 class="mb-12 text-center">Priser</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Pricing plans -->
                 <div
                     class="bg-white p-8 rounded-lg shadow-lg text-center transition duration-300 ease-in-out hover:shadow-2xl hover:transform hover:-translate-y-1 flex flex-col"
                 >
@@ -42,23 +41,6 @@
                             </svg>
                             <span>5 AI-genererade bilder</span>
                         </li>
-                        <li class="mb-2 flex items-center">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 mr-2 text-green-600"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                            1 bildstil
-                        </li>
                         <li class="flex items-center">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -84,11 +66,14 @@
                         <p class="text-3xl font-bold text-green-600 mb-6">
                             499 kr
                         </p>
-                        <button
-                            class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
-                        >
-                            Köp Bas
-                        </button>
+                        <a href="#order">
+                            <button
+                                @click="emitPackage('bas')"
+                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
+                            >
+                                Köp Bas
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div
@@ -144,23 +129,6 @@
                                     d="M5 13l4 4L19 7"
                                 />
                             </svg>
-                            2 bildstilar
-                        </li>
-                        <li class="mb-2 flex items-center">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 mr-2 text-green-600"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
                             Bildleverans inom 3 dagar
                         </li>
                         <li class="flex items-center">
@@ -188,11 +156,14 @@
                         <p class="text-3xl font-bold text-green-600 mb-6">
                             899 kr
                         </p>
-                        <button
-                            class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
-                        >
-                            Köp Pro
-                        </button>
+                        <a href="#order">
+                            <button
+                                @click="emitPackage('pro')"
+                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
+                            >
+                                Köp Pro
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div
@@ -233,23 +204,6 @@
                             </svg>
                             <span>20 AI-genererade bilder</span>
                         </li>
-                        <li class="mb-2 flex items-center">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 mr-2 text-green-600"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                            4 bildstilar
-                        </li>
                         <li class="mb-2 flex items-start">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +219,7 @@
                                     d="M5 13l4 4L19 7"
                                 />
                             </svg>
-                            <span>Expressleverans inom 1 dag</span>
+                            <span>Bildleverans inom 3 dagar</span>
                         </li>
                         <li class="mb-2 flex items-center">
                             <svg
@@ -292,14 +246,28 @@
                         <p class="text-3xl font-bold text-green-600 mb-6">
                             1599 kr
                         </p>
-                        <button
-                            class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
-                        >
-                            Köp Premium
-                        </button>
+                        <a href="#order">
+                            <button
+                                @click="emitPackage('premium')"
+                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full"
+                            >
+                                Köp Premium
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script setup>
+import { defineEmits } from "vue";
+
+const emit = defineEmits(["select-package"]);
+
+const emitPackage = (packageType) => {
+    console.log(`Emitting package: ${packageType}`); // Lägg till logg
+    emit("select-package", packageType);
+};
+</script>
