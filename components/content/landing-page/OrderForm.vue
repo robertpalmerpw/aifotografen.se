@@ -91,18 +91,6 @@
                 <p class="font-medium">Totalt: {{ totalPrice }} kr</p>
             </div>
 
-            <div class="mb-4 md:mb-6 p-4 bg-blue-100 rounded-xl">
-                <p class="mb-2">
-                    När du har skickat in beställningen kommer vi att granska
-                    den och återkomma till dig inom 1-2 arbetsdagar med en
-                    orderbekräftelse och betalningsinstruktioner.
-                </p>
-                <p>
-                    Observera att betalning måste göras via Swish innan vi
-                    påbörjar arbetet med dina AI-genererade bilder.
-                </p>
-            </div>
-
             <div class="flex items-center justify-center">
                 <button
                     type="submit"
@@ -110,6 +98,14 @@
                 >
                     Skicka beställning
                 </button>
+            </div>
+
+            <div class="mb-4 md:mt-6 p-4 bg-blue-100 rounded-xl">
+                <p class="p-2">
+                    När du har skickat in beställningen kommer vi att granska
+                    den och återkomma till dig inom 1-2 arbetsdagar med en
+                    orderbekräftelse och betalningsinstruktioner.
+                </p>
             </div>
         </form>
 
